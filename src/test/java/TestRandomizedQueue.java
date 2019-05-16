@@ -20,7 +20,7 @@ public class TestRandomizedQueue {
     }
 
     @Test
-    public void TestIsEmptyTrueIf1Element() {
+    public void TestIsEmptyFalseIf1Element() {
         //Arrange
         randomizedQueue = new RandomizedQueue();
         randomizedQueue.enqueue(1);
@@ -141,6 +141,71 @@ public class TestRandomizedQueue {
         }
         //Assert
         Assert.assertTrue(NoSuchElementException.class.isInstance(actual));
+    }
+
+    @Test
+    public void TestIteratorHasNextFalseIf0Elements() {
+        //Arrange
+        randomizedQueue = new RandomizedQueue();
+        //Act
+        boolean expected = false;
+        boolean actual = randomizedQueue.iterator().hasNext();
+        //Assert
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void TestIteratorHasNextFalseTrueIf1Element() {
+        //Arrange
+        randomizedQueue = new RandomizedQueue();
+        randomizedQueue.enqueue(1);
+        //Act
+        boolean expected = true;
+        boolean actual = randomizedQueue.iterator().hasNext();
+        //Assert
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void TestIteratorNextIsaIf1ElementIsa() {
+        //Arrange
+        randomizedQueue = new RandomizedQueue<Integer>();
+        randomizedQueue.enqueue(1);
+        //Act
+        int expected = 1;
+        int actual = (int)randomizedQueue.iterator().next();
+        //Assert
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void TestIteratorThrowsNoSuchElementExceptionOnNextIfEmpty() {
+        //Arrange
+        randomizedQueue = new RandomizedQueue();
+        Exception actual = null;
+        //Act
+        try {
+            randomizedQueue.iterator().next();
+        } catch (NoSuchElementException e) {
+            actual = e;
+        }
+        //Assert
+        Assert.assertTrue(NoSuchElementException.class.isInstance(actual));
+    }
+
+    @Test
+    public void TestIteratorThrowsUnsupportedOperationExceptionOnRemove() {
+        //Arrange
+        randomizedQueue = new RandomizedQueue();
+        Exception actual = null;
+        //Act
+        try {
+            randomizedQueue.iterator().remove();
+        } catch (UnsupportedOperationException e) {
+            actual = e;
+        }
+        //Assert
+        Assert.assertTrue(UnsupportedOperationException.class.isInstance(actual));
     }
 
     @After
