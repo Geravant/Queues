@@ -44,7 +44,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         return randomNode().item;
     }                     // return a random item (but do not remove it)
     public Iterator<Item> iterator() {
-        return new RandomizedQueueIterator<Item>(this);
+        return new RandomizedQueueIterator<Item>();
     }         // return an independent iterator over items in random order
     public static void main(String[] args) {
 
@@ -95,8 +95,16 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     private class RandomizedQueueIterator<Item> implements Iterator<Item> {
         private RandomizedQueue<Item> iteratedQueue;
 
-        public RandomizedQueueIterator(RandomizedQueue iteratedQueue) {
-            this.iteratedQueue = iteratedQueue;
+        public RandomizedQueueIterator() {
+            iteratedQueue = new RandomizedQueue<Item>();
+            if (!isEmpty()) {
+                iteratedQueue.enqueue((Item) firstNode.item);
+                Node<Item> currentNode = (Node<Item>)firstNode;
+                while (currentNode.nextNode != null) {
+                    iteratedQueue.enqueue(currentNode.item);
+                    currentNode = currentNode.nextNode;
+                }
+            }
         }
 
         @Override
