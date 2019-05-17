@@ -4,10 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.SortedSet;
+import java.util.*;
 
 public class TestRandomizedQueue {
     private RandomizedQueue randomizedQueue;
@@ -235,6 +232,29 @@ public class TestRandomizedQueue {
         System.out.println(counter);
         //Assert
         Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testIfTwoIteratorsWorkCorrecly() {
+      //Arrange
+      RandomizedQueue<Integer> randomizedQueue = new RandomizedQueue<Integer>();
+      int numberOfEntries = 100;
+      for (int i = 0; i< numberOfEntries; i++) {
+        randomizedQueue.enqueue(i);
+      }
+      int expected = numberOfEntries;
+      Iterator<Integer> firstIterator = randomizedQueue.iterator();
+      Iterator<Integer> secondIterator = randomizedQueue.iterator();
+      int counter = 0;
+      //Act
+      while (firstIterator.hasNext() && secondIterator.hasNext()) {
+        firstIterator.next();
+        secondIterator.next();
+        counter++;
+      }
+      int actual = counter;
+      //Assert
+      Assert.assertEquals(expected, actual);
     }
 
     @After
