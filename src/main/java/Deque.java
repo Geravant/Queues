@@ -12,16 +12,19 @@ public class Deque<Item> implements Iterable<Item>{
     public Iterator<Item> iterator() {
         return new DequeIterator<>(firstNode);
     }
-
+    // construct an empty deque
     public Deque() {
         size = 0;
-    }                           // construct an empty deque
+    }
+    // is the deque empty?
     public boolean isEmpty() {
         return size == 0;
-    }                 // is the deque empty?
+    }
+    // return the number of items on the deque
     public int size() {
         return size;
-    }                       // return the number of items on the deque
+    }
+    // add the item to the front
     public void addFirst(Item item) {
         if (item == null) throw new IllegalArgumentException();
         if (firstNode == null) {
@@ -35,7 +38,8 @@ public class Deque<Item> implements Iterable<Item>{
             firstNode = newNode;
         }
         size++;
-    }          // add the item to the front
+    }
+    // add the item to the end
     public void addLast(Item item) {
         if (item == null) throw new IllegalArgumentException();
         if (lastNode == null) {
@@ -49,22 +53,27 @@ public class Deque<Item> implements Iterable<Item>{
             lastNode = newNode;
         }
         size++;
-    }          // add the item to the end
+    }
+    // remove and return the item from the front
     public Item removeFirst() {
         if (size == 0) throw new NoSuchElementException();
         Item result = firstNode.item;
         firstNode = firstNode.nextNode;
         size--;
         return  result;
-    }               // remove and return the item from the front
+    }
+    // remove and return the item from the end
     public Item removeLast() {
         if (size == 0) throw new NoSuchElementException();
         Item result = lastNode.item;
         lastNode = lastNode.previousNode;
         size--;
         return  result;
-    }                // remove and return the item from the end
-    public static void main(String[] args) {}  // unit testing (optional)
+    }
+    // unit testing (optional)
+    public static void main(String[] args) {//
+        //Comment about intentional omitting code here
+    }
 
     private class Node<Item> {
         public Node(Item item) {
