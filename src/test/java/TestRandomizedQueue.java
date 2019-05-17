@@ -1,9 +1,13 @@
+import edu.princeton.cs.algs4.StdRandom;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashSet;
 import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.SortedSet;
 
 public class TestRandomizedQueue {
     private RandomizedQueue randomizedQueue;
@@ -206,6 +210,31 @@ public class TestRandomizedQueue {
         }
         //Assert
         Assert.assertTrue(UnsupportedOperationException.class.isInstance(actual));
+    }
+
+    @Test
+    public void testIfDequesSame10ValuesThatEnques() {
+        //Arrange
+        RandomizedQueue<Integer> randomizedQueue = new RandomizedQueue<Integer>();
+        Set<Integer> expectedDeques = new HashSet<Integer>();
+        int numberOfEntries = 100;
+        for (int i = 0; i< numberOfEntries; i++) {
+            randomizedQueue.enqueue(i);
+            expectedDeques.add(i);
+        }
+        boolean expected = true;
+        boolean actual = true;
+        int counter = 0;
+        //Act
+        while (actual && counter < numberOfEntries) {
+            int dequeResult = randomizedQueue.dequeue();
+            actual = expectedDeques.contains(dequeResult);
+            expectedDeques.remove(dequeResult);
+            counter++;
+        }
+        System.out.println(counter);
+        //Assert
+        Assert.assertEquals(expected, actual);
     }
 
     @After
