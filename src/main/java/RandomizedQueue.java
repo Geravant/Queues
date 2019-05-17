@@ -57,11 +57,15 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
                 resultNode.nextNode.previousNode = resultNode.previousNode;
                 resultNode.previousNode.nextNode = resultNode.nextNode;
             }
-            else firstNode = resultNode.nextNode;
+            else {
+                firstNode = resultNode.nextNode;
+                resultNode.nextNode.previousNode = null;
+            }
         }
         else if (resultNode.previousNode != null) {
             resultNode.previousNode.nextNode = null;
         }
+        else firstNode = null;
         return result;
     }
 
