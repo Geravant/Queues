@@ -60,6 +60,20 @@ public class TestDeque {
         //Assert
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void testIfAddFirstWorksAfterRemoveLast() {
+        //Arrange
+        deque = new Deque<Integer>();
+        int expected = 6;
+        //Act
+        deque.addFirst(1);
+        deque.removeLast();
+        deque.addFirst(6);
+        int actual = deque.removeLast();
+        //Assert
+        Assert.assertEquals(expected, actual);
+    }
     @After
     public void tearDown() {
         deque = null;
