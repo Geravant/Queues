@@ -229,7 +229,6 @@ public class TestRandomizedQueue {
             expectedDeques.remove(dequeResult);
             counter++;
         }
-        System.out.println(counter);
         //Assert
         Assert.assertEquals(expected, actual);
     }
@@ -253,6 +252,31 @@ public class TestRandomizedQueue {
         counter++;
       }
       int actual = counter;
+      //Assert
+      Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testIteratorReturnSameValuesToEnqued() {
+      //Arrange
+      RandomizedQueue<Integer> randomizedQueue = new RandomizedQueue<Integer>();
+      Set<Integer> expectedDeques = new HashSet<Integer>();
+      int numberOfEntries = 10;
+      for (int i = 0; i< numberOfEntries; i++) {
+        randomizedQueue.enqueue(i);
+        expectedDeques.add(i);
+      }
+      boolean expected = true;
+      boolean actual = true;
+      int counter = 0;
+      Iterator<Integer> iterator = randomizedQueue.iterator();
+      //Act
+      while (actual && counter < numberOfEntries) {
+        int dequeResult = iterator.next();
+        actual = expectedDeques.contains(dequeResult);
+        expectedDeques.remove(dequeResult);
+        counter++;
+      }
       //Assert
       Assert.assertEquals(expected, actual);
     }
