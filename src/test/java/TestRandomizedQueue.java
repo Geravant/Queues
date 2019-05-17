@@ -9,7 +9,7 @@ public class TestRandomizedQueue {
     private RandomizedQueue randomizedQueue;
 
     @Test
-    public void TestIsEmptyTrueIf0Elements() {
+    public void testIsEmptyTrueIf0Elements() {
         //Arrange
         randomizedQueue = new RandomizedQueue();
         //Act
@@ -20,7 +20,7 @@ public class TestRandomizedQueue {
     }
 
     @Test
-    public void TestIsEmptyFalseIf1Element() {
+    public void testIsEmptyFalseIf1Element() {
         //Arrange
         randomizedQueue = new RandomizedQueue();
         randomizedQueue.enqueue(1);
@@ -32,7 +32,7 @@ public class TestRandomizedQueue {
     }
 
     @Test
-    public void TestSizeIs0If0Elements() {
+    public void testSizeIs0If0Elements() {
         //Arrange
         randomizedQueue = new RandomizedQueue();
         //Act
@@ -43,7 +43,7 @@ public class TestRandomizedQueue {
     }
 
     @Test
-    public void TestSizeIs1If1Elements() {
+    public void testSizeIs1If1Elements() {
         //Arrange
         randomizedQueue = new RandomizedQueue();
         randomizedQueue.enqueue("a");
@@ -55,7 +55,7 @@ public class TestRandomizedQueue {
     }
 
     @Test
-    public void TestSizeIs100If100Elements() {
+    public void testSizeIs100If100Elements() {
         //Arrange
         randomizedQueue = new RandomizedQueue();
         for (int i =0; i< 100; i++) {
@@ -69,7 +69,7 @@ public class TestRandomizedQueue {
     }
 
     @Test
-    public void TestDequeAAfterEnqueA() {
+    public void testDequeAAfterEnqueA() {
         //Arrange
         RandomizedQueue<String> randomizedQueue = new RandomizedQueue();
         randomizedQueue.enqueue("A");
@@ -84,7 +84,7 @@ public class TestRandomizedQueue {
     }
 
     @Test
-    public void TestSampleAAfterEnqueA() {
+    public void testSampleAAfterEnqueA() {
         //Arrange
         RandomizedQueue<String> randomizedQueue = new RandomizedQueue();
         randomizedQueue.enqueue("A");
@@ -99,7 +99,7 @@ public class TestRandomizedQueue {
     }
 
     @Test
-    public void TestThrowsIllegalArgumentExceptionIfEnqueNull() {
+    public void testThrowsIllegalArgumentExceptionIfEnqueNull() {
         //Arrange
         randomizedQueue = new RandomizedQueue();
         Exception actual = null;
@@ -114,7 +114,7 @@ public class TestRandomizedQueue {
     }
 
     @Test
-    public void TestThrowsNoSuchElementExceptionIfDequeEmpty() {
+    public void testThrowsNoSuchElementExceptionIfDequeEmpty() {
         //Arrange
         randomizedQueue = new RandomizedQueue();
         Exception actual = null;
@@ -129,7 +129,7 @@ public class TestRandomizedQueue {
     }
 
     @Test
-    public void TestThrowsNoSuchElementExceptionIfSampleEmpty() {
+    public void testThrowsNoSuchElementExceptionIfSampleEmpty() {
         //Arrange
         randomizedQueue = new RandomizedQueue();
         Exception actual = null;
@@ -144,7 +144,7 @@ public class TestRandomizedQueue {
     }
 
     @Test
-    public void TestIteratorHasNextFalseIf0Elements() {
+    public void testIteratorHasNextFalseIf0Elements() {
         //Arrange
         randomizedQueue = new RandomizedQueue();
         //Act
@@ -155,7 +155,7 @@ public class TestRandomizedQueue {
     }
 
     @Test
-    public void TestIteratorHasNextFalseTrueIf1Element() {
+    public void testIteratorHasNextFalseTrueIf1Element() {
         //Arrange
         randomizedQueue = new RandomizedQueue();
         randomizedQueue.enqueue(1);
@@ -167,7 +167,7 @@ public class TestRandomizedQueue {
     }
 
     @Test
-    public void TestIteratorNextIsaIf1ElementIsa() {
+    public void testIteratorNextIsaIf1ElementIsa() {
         //Arrange
         randomizedQueue = new RandomizedQueue<Integer>();
         randomizedQueue.enqueue(1);
@@ -179,7 +179,7 @@ public class TestRandomizedQueue {
     }
 
     @Test
-    public void TestIteratorThrowsNoSuchElementExceptionOnNextIfEmpty() {
+    public void testIteratorThrowsNoSuchElementExceptionOnNextIfEmpty() {
         //Arrange
         randomizedQueue = new RandomizedQueue();
         Exception actual = null;
@@ -194,7 +194,7 @@ public class TestRandomizedQueue {
     }
 
     @Test
-    public void TestIteratorThrowsUnsupportedOperationExceptionOnRemove() {
+    public void testIteratorThrowsUnsupportedOperationExceptionOnRemove() {
         //Arrange
         randomizedQueue = new RandomizedQueue();
         Exception actual = null;
