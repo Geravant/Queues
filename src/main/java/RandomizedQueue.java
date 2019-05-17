@@ -98,12 +98,12 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         public RandomizedQueueIterator() {
             iteratedQueue = new RandomizedQueue<Item>();
             if (!isEmpty()) {
-                iteratedQueue.enqueue((Item) firstNode.item);
                 Node<Item> currentNode = (Node<Item>)firstNode;
                 while (currentNode.nextNode != null) {
                     iteratedQueue.enqueue(currentNode.item);
                     currentNode = currentNode.nextNode;
                 }
+                iteratedQueue.enqueue(currentNode.item);
             }
         }
 
