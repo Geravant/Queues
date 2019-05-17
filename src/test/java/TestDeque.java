@@ -2,6 +2,9 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
+import javax.print.attribute.IntegerSyntax;
+import java.util.Iterator;
+
 public class TestDeque {
     private Deque<Integer> deque;
 
@@ -72,6 +75,27 @@ public class TestDeque {
         deque.addFirst(6);
         int actual = deque.removeLast();
         //Assert
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testIteratorAfterIntermixedCalls() {
+        //Arrange
+        deque = new Deque<Integer>();
+        deque.addLast(1);
+        deque.removeFirst();
+        deque.addLast(3);
+        deque.addFirst(4);
+
+        deque.removeLast();
+        int expected = 1;
+        //Act
+        int actual = 0;
+        Iterator iterator = deque.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+            actual++;
+        }
         Assert.assertEquals(expected, actual);
     }
     @After
